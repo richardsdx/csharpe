@@ -6,11 +6,74 @@
         xmlns:local="clr-namespace:AviacaoWPF"
         mc:Ignorable="d"
         Title="WindowPessoa" Height="450" Width="800">
-    <StackPanel 
-        Orientation="Vertical">
-        <TextBlock Text="{Binding Path=Pessoa.Id}">
-        </TextBlock>
-        <TextBox Text="{Binding Path=Pessoa.Nome}">
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Button
+            Content="Adicionar"
+            x:Name="Adicionar_Button"
+            Grid.Column="0"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Margin="10, 10, 10, 10"
+            Width="75"
+            Click="Adicionar_Button_Click"/>
+        <Button
+            Content="Remover"
+            x:Name="Remover_Button"
+            Grid.Column="1"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Margin="10, 10, 10, 10"
+            Width="75"
+            Click="Remover_Button_Click"/>
+        
+        <ListView Grid.ColumnSpan="2" ItemsSource = "{Binding Path=PessoasViewModel.Pessoas}"
+                  DisplayMemberPath="Nome"
+                  SelectedItem="{Binding Path=PessoasViewModel.PessoaSelecionada}"/>
+
+        <TextBlock  FontSize="30" Grid.Row="2"
+                   Grid.Column="0">Id:</TextBlock>
+        <TextBlock  FontSize="30" Grid.Row="3"
+                   Grid.Column="0">Nome:</TextBlock>
+        <TextBox Grid.Row="2"
+                   Grid.Column="1" Text="{Binding Path=PessoasViewModel.PessoaSelecionada.Id}">
         </TextBox>
-    </StackPanel>
+        <TextBox Grid.Row="3"
+                 Grid.Column="1" Text="{Binding Path=PessoasViewModel.PessoaSelecionada.Nome}">
+        </TextBox>
+
+        <Button 
+            x:Name="Ok_Button"
+            Grid.Column="0" 
+            Grid.Row="5" 
+            Content="Ok"
+            HorizontalAlignment="Center"
+            Margin="10, 10, 10, 10"
+            Width="75"
+            Click="Ok_Button_Click"/>
+
+
+        <Button 
+            x:Name="Cancelar_Button"
+            Grid.Column="1" 
+            Grid.Row="5" 
+            Content="Cancelar"
+            HorizontalAlignment="Center"
+            Margin="10, 10, 10, 10"
+            Width="75"
+            Click="Cancelar_Button_Click"/>
+    </Grid>
 </Window>

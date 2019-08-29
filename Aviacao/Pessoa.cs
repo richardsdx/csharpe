@@ -12,6 +12,7 @@ namespace Aviacao
         public int Id { get; set; }
 
         [Required]
+
         [MinLength(5)]
         [MaxLength(100)]
         public String Nome { get; set; }
